@@ -61,7 +61,7 @@ code {
 
 .rating:not(:checked) > label:hover,
 .rating:not(:checked) > label:hover ~ label {
-  color: #ff9e0b;
+  color: hsl(352, 79%, 52%);
 }
 
 .rating > input:checked ~ label {

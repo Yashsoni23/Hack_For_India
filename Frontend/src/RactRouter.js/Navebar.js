@@ -30,9 +30,9 @@ function Navebar() {
 
   return (
     <>
-      <div className="fixed z-50 top-0 px-[1rem] py-[.8rem] flex justify-between items-center w-full bg-[#0000009a] shadow-[0_0_10px_rgba(0,0,0,0.4)]">
-        <h2 className="text-[1.5rem] text-white font-bold">
-          <span className="text-primaryColor">End</span>Poverty
+      <div className="fixed z-50 top-0 px-[1rem] py-[.8rem] flex justify-between items-center w-full bg-white shadow-[0_0_10px_rgba(0,0,0,0.4)]">
+        <h2 className="text-[1.5rem] text-black font-bold">
+          <span className="text-primaryColor text-[1.5rem] mr-[.1rem]">क</span>RM
         </h2>
         <ul
           className={` max-sm:absolute max-sm:justify-center max-sm:items-center  max-sm:top-0  ${
@@ -43,7 +43,7 @@ function Navebar() {
             onClick={() => setMenuopen(!menuopen)}
             className="text-[2rem] text-white"
           /> */}
-          <div className="flex max-sm:flex-col max-sm:gap-[1rem] max-sm:text-center text-white font-bold ">
+          <div className="flex max-sm:flex-col max-sm:gap-[1rem] max-sm:text-center text-black font-bold ">
             <li className="px-3">
               <NavLink className="max-sm:text-[2rem]" to={"/"}>
                 home

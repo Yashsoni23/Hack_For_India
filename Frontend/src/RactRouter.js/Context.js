@@ -7,7 +7,7 @@ export const useGlobal = () => useContext(UseGlobal);
 
 
 export function Context(props) {
-    const [isLoggedIn,setIsLoggedIn] = useState(true)
+    const [isLoggedIn,setIsLoggedIn] = useState(false)
 
     console.log(props);
   return (

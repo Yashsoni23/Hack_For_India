@@ -7,6 +7,7 @@ function ProfilePage() {
   const [data, setData] = useState({});
   useEffect(() => {
     setData(JSON.parse(localStorage.getItem("loginData")));
+    // data.Catagory == "client" && setUserWorker(false)
   }, []);
 
   const heandalinput = (event) => {
@@ -24,170 +25,271 @@ function ProfilePage() {
   };
 
   return (
-    <section className="absolute top-0 bottom-0  w-full text-black pt-[6rem] p-[2rem]">
-      <div className="absolute right-[2rem] flex gap-[1rem] ">
-        {proEditable && (
-          <div
-            onClick={setEditedData}
-            className="cursor-pointer flex justify-center items-center gap-[.8rem] h-[2.5rem] font-medium px-[1.4rem] rounded-[2rem] text-white bg-primaryColor"
-          >
-            <h2>save</h2>
-          </div>
-        )}
-        <div
-          onClick={() => setProEditable(!proEditable)}
-          className="cursor-pointer flex justify-center items-center gap-[.8rem] h-[2.5rem] font-medium px-[1rem] rounded-[2rem] bg-Cardcolor"
-        >
-          <FaPen />
-          <h2>Edit</h2>
-        </div>
-      </div>
-      <div className="flex max-sm:flex-col max-sm:gap-[4rem] gap-[2rem] p-[2rem] h-full w-full ">
-        <div className="flex flex-col max-sm:justify-center max-sm:items-center gap-[3rem] h-full w-1/4 max-sm:w-full">
-          <div className="relative ml-[1rem] h-[15rem] w-[15rem] rounded-full  bg-red-300">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRudDbHeW2OobhX8E9fAY-ctpUAHeTNWfaqJA&usqp=CAU"
-              alt=""
-              className=" h-[15rem] w-[15rem] rounded-full bg-green-400"
-            />
-            <div className="absolute bottom-[1.5rem] right-[1rem] flex justify-center items-center h-[2.5rem] w-[2.5rem] rounded-full bg-Cardcolor">
-              <FaPen className="text-[1.2rem]" />
+    <div className="relative bg-slate-100 h-screen w-full pt-[5rem]">
+      <div className="container px-[1.2rem] p-5">
+        <div className="md:flex gap-[2rem] no-wrap  ">
+          {/* <div className="absolute top-[5rem] right-[1rem] bg-red-400 h-[2rem] w-[3rem] t">Edit</div> */}
+
+          <div className="w-full md:w-[19rem] md:mx-2">
+            <div className="bg-white p-[1rem] rounded-[1rem] shadow-[0_4px_7px_rgba(0,0,0,0.4)]">
+              <div className="mx-auto mt-[1rem] h-[14rem] w-[14rem] mb-[1rem]">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRudDbHeW2OobhX8E9fAY-ctpUAHeTNWfaqJA&usqp=CAU"
+                  className="h-full w-full"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div className="image overflow-hidden">
+                <img
+                  className="h-auto w-full mx-auto"
+                  src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
+                  alt=""
+                />
+              </div>
+              <input
+                required
+                onChange={(e) => heandalinput(e)}
+                name="phone"
+                value={data?.userName}
+                placeholder="userName"
+                className="text-gray-900 font-bold text-xl leading-8 my-1 bg-transparent"
+                disabled
+              />
+
+              <h3 className="text-gray-600 font-lg text-semibold leading-6">
+                Owner at Her Company Inc.
+              </h3>
+              <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur
+                non deserunt
+              </p>
+              <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                <li className="flex items-center py-3">
+                  <span>Status</span>
+                  <span className="ml-auto">
+                    <span className="bg-primaryColor py-1 px-2 rounded text-white text-sm">
+                      {userWorker ? "Worker" : "client"}
+                    </span>
+                  </span>
+                </li>
+                {userWorker && (
+                  <li className="flex items-center py-3">
+                    <span>Work</span>
+                    <span className="ml-auto">{data?.Catagory}</span>
+                  </li>
+                )}
+              </ul>
             </div>
           </div>
 
-          <div className="px-[2rem]">
-            <div className="flex justify-center items-center h-[2.5rem] text-[1.2rem] w-[13rem] rounded-[1.3rem] bg-ButtonColor text-white">
-              {userWorker ? "worker" : "client"}
-            </div>
-            <div className="flex max-sm:hidden max-sm:w-full flex-col max-sm:flex-row">
-            <div>
-            <h2 className="mt-[3rem] text-[1.4rem] font-semibold">
-              Profession
-            </h2>
-              <h1>carpainter</h1>
-            </div>
-            <div>
-              <h1 className="mt-[.6rem] text-[1.4rem] font-semibold ">
-                experience
-              </h1>
-              <h1>3 Year</h1>
-            </div>
-            </div>
-          </div>
-        </div>
+          <div className="relative w-full md:w-9/12 mx-2 h-64 max-sm:h-fit">
+            <div className="absolute flex-col m-[1rem] top-0 right-0 ">
+              <div
+                onClick={() => setProEditable(!proEditable)}
+                className="cursor-pointer mb-[.4rem] py-[.3rem] px-[1rem] rounded-[1rem] bg-ButtonColor text-white font-semibold"
+              >
+                Edite
+              </div>
 
-        <div
-          className={`${
-            proEditable && " text-primaryColor"
-          } flex flex-col gap-[1.2rem] h-full w-3/4 max-sm:w-full  max-sm:w-full"`}
-        >
-          <div className="h-[2/3]">
-            <div className="flex flex-col gap-[.2rem]">
-              <input
-                onChange={(e) => proEditable && heandalinput(e)}
-                placeholder="Add Username"
-                name="name"
-                contentEditable="false"
-                className="p-[.4rem] outline-none text-[2rem] font-bold border-primaryColor/40 border-dotted border-[.2rem] rounded-[.4rem]"
-                value={data?.name}
-              ></input>
-              <input
-                onChange={(e) => proEditable && heandalinput(e)}
-                placeholder="Add Email"
-                name="Email"
-                className="p-[.4rem] outline-none border-primaryColor/40 border-dotted border-[.2rem] rounded-[.4rem]"
-                value={data?.Email}
-              ></input>
+              {proEditable && (
+                <div
+                  onClick={() => setProEditable(!proEditable)}
+                  className="cursor-pointer py-[.3rem] px-[1rem] rounded-[1rem] bg-primaryColor text-white font-semibold"
+                >
+                  Save
+                </div>
+              )}
             </div>
-            {userWorker && (
-              <div>
-                <h2 className="text-[1.2rem] font-semibold">reating</h2>
-                <div className="flex items-center gap-[1rem]">
-                  <span className="text-[2rem]">8,6</span>
-                  <div class="rating">
-                    <input value="5" name="rate" id="star5" type="radio" />
-                    <label title="text" for="star5"></label>
-                    <input value="4" name="rate" id="star4" type="radio" />
-                    <label title="text" for="star4"></label>
-                    <input
-                      value="3"
-                      name="rate"
-                      id="star3"
-                      type="radio"
-                      checked=""
+            <div className="max-sm:mt-[2rem] w-full bg-white p-[2rem] pb-[3rem] pr-[6rem] rounded-[1rem] shadow-[0_4px_7px_rgba(0,0,0,0.4)]">
+              <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                <span clas="text-green-500">
+                  <svg
+                    className="h-[2rem]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                     />
-                    <label title="text" for="star3"></label>
-                    <input value="2" name="rate" id="star2" type="radio" />
-                    <label title="text" for="star2"></label>
-                    <input value="1" name="rate" id="star1" type="radio" />
-                    <label title="text" for="star1"></label>
+                  </svg>
+                </span>
+                <span className="tracking-wide text-[2rem]">About</span>
+              </div>
+              <div className="text-gray-700 mt-[1.5rem]">
+                <div className="grid md:grid-cols-1 text-sm">
+                  <div className="grid grid-cols-2 max-sm:grid-cols-1 text-[1.4rem] my-[.6rem]">
+                    <div className="px-4 py-2 font-semibold">Name</div>
+                    {proEditable ? (
+                      <input
+                        required
+                        onChange={(e) => heandalinput(e)}
+                        name="userName"
+                        placeholder="Name"
+                        value={data?.userName}
+                        className="px-4 py-2 -ml-[12rem] max-sm:ml-0 bg-transparent border-b-2 border-ButtonColor/50 outline-none focus:border-ButtonColor duration-300"
+                      />
+                    ) : (
+                      <input
+                        required
+                        onChange={(e) => heandalinput(e)}
+                        name="userName"
+                        placeholder="Name"
+                        value={data?.userName}
+                        className="px-4 py-2 -ml-[12rem] max-sm:-ml-0 bg-transparent border-b-2 outline-none focus:border-ButtonColor duration-300"
+                        disabled
+                      />
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-2 max-sm:grid-cols-1 text-[1.4rem] my-[.6rem]">
+                    <div className="px-4 py-2 font-semibold">Email.</div>
+                    <div className=" -ml-[12rem] max-sm:ml-0">
+                      {proEditable ? (
+                        <input
+                          type="text"
+                          required
+                          onChange={(e) => heandalinput(e)}
+                          name="Email"
+                          className="w-full px-4 py-2 bg-transparent max-sm:ml-0 border-b-2 border-ButtonColor/50 outline-none focus:border-ButtonColor duration-300"
+                          placeholder="Email"
+                          value={data?.Email}
+                        />
+                      ) : (
+                        <input
+                          type="text"
+                          required
+                          onChange={(e) => heandalinput(e)}
+                          name="Email"
+                          className="w-full px-4 py-2 bg-transparent max-sm:ml-0 border-b-2 outline-none focus:border-ButtonColor duration-300"
+                          placeholder="Email"
+                          value={data?.Email}
+                          disabled
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 max-sm:grid-cols-1 text-[1.4rem] my-[.6rem] ">
+                    <div className="px-4 py-2 font-semibold">Gender</div>
+
+                    {!proEditable ? (
+                      <div className="px-4 py-2 -ml-[12rem] max-sm:ml-0 flex gap-[2rem] justify-start border-b-2 border-slate-200">
+                        <div className="">Female</div>
+                      </div>
+                    ) : (
+                      <div className="px-4 py-2 -ml-[12rem] max-sm:ml-0 flex gap-[2rem] justify-start">
+                        <div className="flex gap-[.8rem] items-center capitalize">
+                          <input
+                            type="radio"
+                            name="Gender"
+                            id="male"
+                            onClick={(e) => heandalinput(e)}
+                            value="male"
+                            className="scale-[1.6]"
+                          />
+                          <label htmlFor="male">male</label>
+                        </div>
+                        <div className="flex gap-[.8rem] items-center capitalize">
+                          <input
+                            type="radio"
+                            name="Gender"
+                            id="female"
+                            onClick={(e) => heandalinput(e)}
+                            value="female"
+                            className="scale-[1.6]"
+                          />
+                          <label htmlFor="female">female</label>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="grid grid-cols-2 max-sm:grid-cols-1 text-[1.4rem] my-[.6rem]">
+                    <div className="px-4 py-2 font-semibold">Contact No.</div>
+                    {proEditable ? (
+                      <input
+                        required
+                        onChange={(e) => heandalinput(e)}
+                        name="Contect"
+                        value={data?.Contect}
+                        type="text"
+                        className="px-4 py-2 -ml-[12rem] border-b-2 max-sm:ml-0 border-ButtonColor/50 outline-none focus:border-ButtonColor transition-colors duration-300"
+                        placeholder="Add Contect number"
+                      />
+                    ) : (
+                      <input
+                        required
+                        onChange={(e) => heandalinput(e)}
+                        name="Contect"
+                        value={data?.Contect}
+                        type="text"
+                        className="px-4 py-2 -ml-[12rem] border-b-2 max-sm:ml-0 bg-transparent outline-none focus:border-ButtonColor transition-colors duration-300"
+                        placeholder="Add Contect number"
+                        disabled
+                      />
+                    )}
+                  </div>
+                  <div className="grid grid-cols-2 max-sm:grid-cols-1 text-[1.4rem] my-[.6rem]">
+                    <div className="px-4 py-2 font-semibold">Address</div>
+
+                    {proEditable ? (
+                      <input
+                        required
+                        onChange={(e) => heandalinput(e)}
+                        name="Addres"
+                        value={data?.Addres}
+                        className="px-4 py-2 -ml-[12rem] bg-transparent max-sm:ml-0 border-b-2 border-ButtonColor/50 outline-none focus:border-ButtonColor duration-300"
+                        placeholder="Address"
+                      />
+                    ) : (
+                      <input
+                        required
+                        onChange={(e) => heandalinput(e)}
+                        name="Addres"
+                        value={data?.Addres}
+                        className="px-4 py-2 -ml-[12rem] bg-transparent max-sm:ml-0 border-b-2 outline-none focus:border-ButtonColor duration-300"
+                        placeholder="Address"
+                        disabled
+                      />
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-2 max-sm:grid-cols-1 text-[1.4rem] my-[.6rem]">
+                    <div className="px-4 py-2 font-semibold">Birthday</div>
+                    {proEditable ? (
+                      <input
+                        required
+                        onChange={(e) => heandalinput(e)}
+                        name="Birthday"
+                        value={data?.Birthday}
+                        className="w-[16rem] px-4 py-2 -ml-[12rem] max-sm:ml-0 bg-transparent border-b-2 border-ButtonColor/50 outline-none focus:border-ButtonColor duration-300"
+                        type="date"
+                      />
+                    ) : (
+                      <input
+                        required
+                        onChange={(e) => heandalinput(e)}
+                        name="Birthday"
+                        value={data?.Birthday}
+                        className="w-[16rem] px-4 py-2 -ml-[12rem] max-sm:ml-0 bg-transparent border-b-2  outline-none focus:border-ButtonColor duration-300"
+                        type="date"
+                        disabled
+                      />
+                    )}
                   </div>
                 </div>
               </div>
-            )}
-          </div>
-          <div className="flex gap-[2rem] text-white">
-            <div className="flex items-center justify-center h-[2.6rem] w-[12rem] gap-[.5rem] text-[1.2rem] text-black">
-              {" "}
-              <FaMessage className="text-[1.4rem]" /> <h2>send message</h2>
-            </div>
-            <div className="flex items-center justify-center h-[2.6rem] w-[12rem] gap-[.5rem] text-[1.2rem] bg-ButtonColor ">
-              {" "}
-              <h2>contect</h2>
-            </div>
-          </div>
-
-          <div className="my-[1rem] h-[.1rem] w-full bg-TextColor2"></div>
-
-          <div className="h-[1/3] flex flex-col gap-[.3rem] w-ful">
-            <div className="w-full flex gap-[2rem]">
-              <h2 className="w-[5rem] text-[1.2rem] font-semibold capitalize">
-                phone :
-              </h2>
-              <input
-                required
-                onChange={(e) => proEditable && heandalinput(e)}
-                name="ConfPasswrod"
-                value={data?.phone}
-                type="text"
-                placeholder="add Number"
-                className="px-[.4rem] border-primaryColor/40 border-dotted border-[.2rem] rounded-[.4rem] outline-none"
-              />
-            </div>
-
-            <div className="w-full flex gap-[2rem]">
-              <h2 className="w-[5rem] text-[1.2rem] font-semibold capitalize">
-                addres :
-              </h2>
-              <input
-                required
-                onChange={(e) => proEditable && heandalinput(e)}
-                name="ConfPasswrod"
-                value={data?.addres}
-                type="text"
-                placeholder="add Number"
-                className="px-[.4rem] border-primaryColor/40 border-dotted border-[.2rem] rounded-[.4rem] outline-none"
-              />
-            </div>
-
-            <div className="w-full flex gap-[2rem]">
-              <h2 className="w-[5rem] text-[1.2rem] font-semibold capitalize">
-                eamil :
-              </h2>
-              <input
-                required
-                onChange={(e) => proEditable && heandalinput(e)}
-                name="ConfPasswrod"
-                value={data?.eamil}
-                type="text"
-                placeholder="add eamil"
-                className="px-[.4rem] border-primaryColor/40 border-dotted border-[.2rem] rounded-[.4rem] outline-none"
-              />
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
