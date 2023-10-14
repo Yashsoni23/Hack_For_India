@@ -31,9 +31,11 @@ function Navebar() {
   return (
     <>
       <div className="fixed z-50 top-0 px-[1rem] py-[.8rem] flex justify-between items-center w-full bg-white shadow-[0_0_10px_rgba(0,0,0,0.4)]">
-        <h2 className="text-[1.5rem] text-black font-bold">
-          <span className="text-primaryColor text-[1.5rem] mr-[.1rem]">क</span>RM
+      <NavLink  to={"/"}>
+        <h2 className="text-[1.5rem] text-black font-bold cursor-pointer">
+          <span className=" text-primaryColor text-[1.5rem] mr-[.1rem]">क</span>RM
         </h2>
+              </NavLink>
         <ul
           className={` max-sm:absolute max-sm:justify-center max-sm:items-center  max-sm:top-0  ${
             menuopen ? "max-sm:left-0" : "max-sm:left-full"
@@ -45,27 +47,27 @@ function Navebar() {
           /> */}
           <div className="flex max-sm:flex-col max-sm:gap-[1rem] max-sm:text-center text-black font-bold ">
             <li className="px-3">
-              <NavLink className="max-sm:text-[2rem]" to={"/"}>
+              <NavLink className="max-sm:text-[2rem] hover:text-primaryColor/50 transition-colors duration-300" to={"/"}>
                 home
               </NavLink>
             </li>
             <li className="px-3">
-              <NavLink className="max-sm:text-[2rem]" to={"/about"}>
+              <NavLink className="max-sm:text-[2rem] hover:text-primaryColor/50 transition-colors duration-300" to={"/about"}>
                 about us
               </NavLink>
             </li>
             <li className="px-3">
-              <NavLink className="max-sm:text-[2rem]" to={"/contect"}>
+              <NavLink className="max-sm:text-[2rem] hover:text-primaryColor/50 transition-colors duration-300" to={"/contect"}>
                 contect
               </NavLink>
             </li>
             <li className="px-3">
-              <NavLink className="max-sm:text-[2rem]" to={"/work"}>
+              <NavLink className="max-sm:text-[2rem] hover:text-primaryColor/50 transition-colors duration-300" to={"/work"}>
                 get work
               </NavLink>
             </li>
             <li className="px-3">
-              <NavLink className="max-sm:text-[2rem]" to={"/workers"}>
+              <NavLink className="max-sm:text-[2rem] hover:text-primaryColor/50 transition-colors duration-300" to={"/workers"}>
                 Workers
               </NavLink>
             </li>
@@ -82,12 +84,12 @@ function Navebar() {
               }}
               className="max-sm:hidden flex justify-center items-center py-[.2rem] px-[.8rem] rounded-[.3rem] bg-primaryColor text-[white] "
             >
-              log out
+              Log out
             </div>
           ) : (
             <NavLink to={"/Login"}>
-              <div className="max-sm:hidden flex justify-center items-center py-[.2rem] px-[.8rem] rounded-[.3rem] bg-primaryColor text-[white]">
-                login
+              <div className="cursor-pointer max-sm:hidden flex justify-center items-center py-[.2rem] px-[.8rem] rounded-[.3rem] bg-primaryColor text-[white]">
+                Login
               </div>
             </NavLink>
           )}

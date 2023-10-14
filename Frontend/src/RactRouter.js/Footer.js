@@ -65,7 +65,7 @@ function Footer() {
     //    <div className=" flex justify-center py-[.8rem] bg-slate-700 text-white">All Rights Reserved by @endPovertyOrg@2023</div>
     //    </div>
 
-    <footer class="bg-slate-100 text-black">
+    <footer class="bg-slate-200 text-black">
       <div class="mx-auto w-full  p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between max-sm:gap-[4rem]">
           <div class="pl-[2rem] mb-6 md:mb-0">
@@ -152,10 +152,10 @@ function Footer() {
           <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
             <a
               href="#"
-              class=" hover:text-gray-900 dark:hover:text-white"
+              class="text-gray-500  hover:text-primaryColor transition-all duration-300"
             >
               <svg
-                class="w-4 h-4"
+                class="w-6 h-6"
                 aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 8 19"
@@ -170,10 +170,10 @@ function Footer() {
             </a>
             <a
               href="#"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              class="text-gray-500  hover:text-primaryColor transition-all duration-300"
             >
               <svg
-                class="w-4 h-4"
+                class="w-6 h-6"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -185,10 +185,10 @@ function Footer() {
             </a>
             <a
               href="#"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              class="text-gray-500  hover:text-primaryColor transition-all duration-300"
             >
               <svg
-                class="w-4 h-4"
+                class="w-6 h-6"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -204,10 +204,10 @@ function Footer() {
             </a>
             <a
               href="#"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              class="text-gray-500  hover:text-primaryColor transition-all duration-300"
             >
               <svg
-                class="w-4 h-4"
+                class="w-6 h-6"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -223,10 +223,10 @@ function Footer() {
             </a>
             <a
               href="#"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              class="text-gray-500  hover:text-primaryColor transition-all duration-300"
             >
               <svg
-                class="w-4 h-4"
+                class="w-6 h-6"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"

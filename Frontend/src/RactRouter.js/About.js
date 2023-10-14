@@ -34,7 +34,9 @@ function About() {
         </div>
         <div className=" mr-[6rem] mt-[10rem] relative h-[28rem] w-[24rem]  max-sm:mr-0 max-sm:mt-0">
           <div className="absolute -bottom-[3rem] -left-[3rem] z-[3] h-[10rem] w-[18rem] rounded-tl-[3rem] rounded-br-[3rem] bg-primaryColor"></div>
-          <div className="absolute z-[4]  h-[28rem] w-[24rem] rounded-tl-[4rem] rounded-br-[4rem] bg-blue-600"></div>
+          <div className="overflow-hidden absolute z-[4]  h-[28rem] w-[24rem] rounded-tl-[4rem] rounded-br-[4rem] shadow-[0px_10px_30px] shadow-primaryColor/60">
+            <img src="./worker.jpg" alt="" className="h-full w-full hover:scale-[1.03] transition-all duration-300 shadow-[0px_10px_30px] shadow-primaryColor/60"/>
+          </div>
         </div>
       </div>
 
@@ -49,10 +51,10 @@ function About() {
           <div className="w-full flex max-sm:flex-col justify-between items-center gap-[4rem]">
             <div className="relative flex justify-center items-center h-[30rem] w-[29rem] max-sm:w-full">
               <div className="overflow-hidden absolute top-0 right-0 h-[14rem] w-[16rem] rounded-tl-[4rem] rounded-br-[4rem] shadow-[0px_10px_30px] shadow-primaryColor/60">
-                <img src="/Indian Construction Workers.jpeg" alt="" className="h-full w-full " />
+                <img src="/Indian Construction Workers.jpeg" alt="" className="h-full w-full hover:scale-[1.1] transition-all duration-300" />
               </div>
               <div className="overflow-hidden absolute bottom-0 left-0 h-[14rem] w-[16rem] rounded-br-[4rem] rounded-tl-[4rem] shadow-[0px_10px_30px] shadow-primaryColor/60">
-                <img src="./img3.jpg" alt="" className="h-full w-full " />
+                <img src="./img3.jpg" alt="" className="h-full w-full hover:scale-[1.1] transition-all duration-300" />
               </div>
               <div className=" absolute -mb-[8rem] -mr-[15rem] h-[6rem] w-[8rem] rounded-bl-[2rem] rounded-tr-[2rem] bg-primaryColor"></div>
               <div className=" absolute -mt-[3rem] -ml-[9rem]  h-[1.6rem] w-[1.6rem] rounded-full bg-primaryColor"></div>
@@ -90,10 +92,10 @@ function About() {
 
             <div className="relative flex justify-center items-center h-[30rem] w-[29rem] max-sm:w-full">
               <div className="overflow-hidden absolute top-0 right-0 h-[14rem] w-[16rem] rounded-tl-[4rem] rounded-br-[4rem] shadow-[0px_10px_30px] shadow-primaryColor/60">
-                <img src="./img2.jpg" alt="" className="h-full w-full " />
+                <img src="./img2.jpg" alt="" className="h-full w-full hover:scale-[1.1] transition-all duration-300" />
               </div>
               <div className="overflow-hidden absolute bottom-0 left-0 h-[14rem] w-[16rem] rounded-br-[4rem] rounded-tl-[4rem] shadow-[0px_10px_30px] shadow-primaryColor/60">
-                <img src="./woodwork.jpeg" alt="" className="h-full w-full " />
+                <img src="./woodwork.jpeg" alt="" className="h-full w-full hover:scale-[1.1] transition-all duration-300" />
               </div>
               <div className=" absolute -mb-[8rem] -mr-[15rem] h-[6rem] w-[8rem] rounded-bl-[2rem] rounded-tr-[2rem] bg-primaryColor"></div>
               <div className=" absolute -mt-[3rem] -ml-[9rem]  h-[1.6rem] w-[1.6rem] rounded-full bg-primaryColor"></div>

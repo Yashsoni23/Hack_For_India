@@ -33,6 +33,9 @@ code {
   color: #E5233D;
   font-size: 1.2rem;
 }
+.active:hover{
+  color: #E5233D;
+}
 
 
 

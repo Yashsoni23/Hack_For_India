@@ -43,8 +43,8 @@ function Home() {
               <span className="text-primaryColor">क</span>RM
             </h3>
             <h1 className="mb-[1.6rem] text-[1.6rem] font-semibold leading-[2.rem] w-[40rem] max-sm:w-full">
-              {/* {firstData} */}
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci ullam aliquid cupiditate reiciendis architecto, officia a laudantium quos, dignissimos natus labore, nesciunt mollitia cumque repellat magni quia consectetur asperiores unde.
+              {firstData}
+              {/* Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci ullam aliquid cupiditate reiciendis architecto, officia a laudantium quos, dignissimos natus labore, nesciunt mollitia cumque repellat magni quia consectetur asperiores unde. */}
             </h1>
 
             <NavLink to={"/Login"}>

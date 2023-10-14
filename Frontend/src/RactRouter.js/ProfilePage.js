@@ -90,7 +90,7 @@ function ProfilePage() {
                 onClick={() => setProEditable(!proEditable)}
                 className="cursor-pointer mb-[.4rem] py-[.3rem] px-[1rem] rounded-[1rem] bg-ButtonColor text-white font-semibold"
               >
-                Edite
+                Edit
               </div>
 
               {proEditable && (

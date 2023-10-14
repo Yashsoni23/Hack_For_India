@@ -117,7 +117,7 @@ function Workers() {
               className="pl-[1rem] outline-none w-4/5 text-[1.3rem] bg-slate-200"
               placeholder="search"
             />
-            <div className="flex justify-center items-center w-1/5 h-full text-[1rem] bg-primaryColor">
+            <div className="cursor-pointer flex justify-center items-center w-1/5 h-full text-[1rem] bg-primaryColor">
               <FaSearch className="text-white" />
             </div>
           </div>
@@ -144,7 +144,7 @@ function Workers() {
 
           {worker.map((worker, i) => {
             return (
-              <div className="flex justify-between items-center gap-[1.2rem] h-fit w-[30rem] p-[1.2rem] rounded-[1rem] border-[1px] border-slate-300 bg-white">
+              <div className="cursor-pointer flex justify-between items-center gap-[1.2rem] h-fit w-[30rem] p-[1.2rem] rounded-[1rem] border-[1px] border-slate-300 bg-white">
               <div className="flex gap-[1rem]">
                 <img
                   src={worker?.img_src}

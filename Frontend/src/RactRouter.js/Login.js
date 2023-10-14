@@ -432,7 +432,7 @@ function Login() {
                        className="cursor-pointer font-semibold"
                        onClick={() => setIsLogin(!isLogin)}
                      >
-                       Signup
+                       Sign up
                      </a>
                    </span>
                         <button  onClick={() => {
