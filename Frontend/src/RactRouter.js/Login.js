@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGlobal } from "./Context";
 import Footer from "./Footer";
+import axios from "axios";
 
 // function Login() {
 
@@ -81,8 +82,8 @@ import Footer from "./Footer";
 //                 <input
 //                   required
 //                   onChange={heandalinput}
-//                   name="Passwrod"
-//                   value={loginData.Passwrod}
+//                   name="password"
+//                   value={loginData.password}
 //                   type="text"
 //                   className="pl-3 bg-transparent  border-2 border-primaryColor/40 focus:border-primaryColor outline-none p-2 rounded-md"
 //                 />
@@ -92,8 +93,8 @@ import Footer from "./Footer";
 //                 <input
 //                   required
 //                   onChange={heandalinput}
-//                   name="ConfPasswrod"
-//                   value={loginData.ConfPasswrod}
+//                   name="Confpassword"
+//                   value={loginData.Confpassword}
 //                   type="text"
 //                   className="pl-3 bg-transparent  border-2 border-primaryColor/40 focus:border-primaryColor outline-none p-2 rounded-md"
 //                 />
@@ -137,15 +138,68 @@ function Login() {
   const [isLogin, setIsLogin] = useState(true);
   const UseGlobal = useGlobal();
   const [loginData, setLoginData] = useState({
-    userName : "" ,
-    Email: "",
-    Passwrod: "",
+    userName: "",
+    email: "",
+    password: "",
     Addres: "",
-    Catagory : "",
-    Birthday : "",
-    Gender:"",
-    Contect : ""
+    Catagory: "",
+    Birthday: "",
+    Gender: "",
+    Contect: "",
   });
+
+  const Signup = async () => {
+    try {
+      const data = await axios.post(
+        "https://no-poverty.adaptable.app/worker/signup",
+        {
+          username: loginData.userName,
+          email: loginData.email,
+          password: loginData.password,
+        }
+      );
+      alert("Signup successful");
+      console.log({ data });
+      setLoginData({
+        userName: "",
+        email: "",
+        password: "",
+        Addres: "",
+        Catagory: "",
+        Birthday: "",
+        Gender: "",
+        Contect: "",
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const Login = async () => {
+    try {
+      const data = await axios.post(
+        "https://no-poverty.adaptable.app/worker/login",
+        {
+          email: loginData.email,
+          password: loginData.password,
+        }
+      );
+      alert("Login successful");
+      console.log({ data });
+      setLoginData({
+        userName: "",
+        email: "",
+        password: "",
+        Addres: "",
+        Catagory: "",
+        Birthday: "",
+        Gender: "",
+        Contect: "",
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   const heandalinput = (event) => {
     const name = event.target.name;
@@ -382,14 +436,14 @@ function Login() {
                     <div class="flex -mx-3">
                       <div class="w-[33rem] px-3 mb-5">
                         <label for="" class="text-xs font-semibold px-1">
-                         User Name / Email
+                          User Name / Email
                         </label>
                         <div class="flex">
                           <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                             <i class="mdi mdi-account-outline text-gray-400 text-lg"></i>
                           </div>
                           <input
-                          required
+                            required
                             onChange={(e) => heandalinput(e)}
                             name="userName"
                             value={loginData.userName}
@@ -399,9 +453,8 @@ function Login() {
                           />
                         </div>
                       </div>
-                      
                     </div>
-                    
+
                     <div class="flex -mx-3">
                       <div class="w-full px-3 mb-12">
                         <label for="" class="text-xs font-semibold px-1">
@@ -412,10 +465,10 @@ function Login() {
                             <i class="mdi mdi-lock-outline text-gray-400 text-lg"></i>
                           </div>
                           <input
-                          required
-                           onChange={(e) => heandalinput(e)}
-                            name="Passwrod"
-                            value={loginData.Passwrod}
+                            required
+                            onChange={(e) => heandalinput(e)}
+                            name="password"
+                            value={loginData.password}
                             type="text"
                             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-ButtonColor"
                             placeholder="************"
@@ -425,20 +478,24 @@ function Login() {
                     </div>
                     <div class="flex -mx-3">
                       <div class="w-full flex justify-center flex-col px-3 mb-5">
-                      <span className="mb-[.6rem] text-center text-TextColor2">
-                 
-                     Don't haven account ?
-                     <a
-                       className="cursor-pointer font-semibold"
-                       onClick={() => setIsLogin(!isLogin)}
-                     >
-                       Sign up
-                     </a>
-                   </span>
-                        <button  onClick={() => {
-                   setDataToLocalSt();
-                }} type="submit" class="block w-full max-w-xs mx-auto bg-ButtonColor/70 hover:bg-ButtonColor focus:bg-ButtonColor text-white rounded-lg px-3 py-3 font-semibold">
-                        LOGIN NOW
+                        <span className="mb-[.6rem] text-center text-TextColor2">
+                          Don't haven account ?
+                          <a
+                            className="cursor-pointer font-semibold"
+                            onClick={() => setIsLogin(!isLogin)}
+                          >
+                            Sign up
+                          </a>
+                        </span>
+                        <button
+                          onClick={() => {
+                            setDataToLocalSt();
+                            Login();
+                          }}
+                          type="submit"
+                          class="block w-full max-w-xs mx-auto bg-ButtonColor/70 hover:bg-ButtonColor focus:bg-ButtonColor text-white rounded-lg px-3 py-3 font-semibold"
+                        >
+                          LOGIN NOW
                         </button>
                       </div>
                     </div>
@@ -454,14 +511,14 @@ function Login() {
                     <div class="flex w-full justify-between items-center -mx-3">
                       <div class="w-1/2 px-3 mb-5">
                         <label for="" class="text-xs font-semibold px-1">
-                           Name
+                          Name
                         </label>
                         <div class="flex">
                           <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                             <i class="mdi mdi-account-outline text-gray-400 text-lg"></i>
                           </div>
                           <input
-                           onChange={(e) => heandalinput(e)}
+                            onChange={(e) => heandalinput(e)}
                             name="userName"
                             value={loginData.userName}
                             type="text"
@@ -471,14 +528,25 @@ function Login() {
                         </div>
                       </div>
                       <div class="w-1/2 px-3  ">
-                       <select  onChange={(e) => heandalinput(e)}  name="Catagory" id="" className="w-full ml-[1.3rem] pl-4 -pr-[3rem] py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-ButtonColor">
-                        <option value="" className="font-medium" defaultChecked>UserCatagory</option>
-                        <option value="client">Client</option>
-                        <option value="carpainter">carpainter</option>
-                       </select>
+                        <select
+                          onChange={(e) => heandalinput(e)}
+                          name="Catagory"
+                          id=""
+                          className="w-full ml-[1.3rem] pl-4 -pr-[3rem] py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-ButtonColor"
+                        >
+                          <option
+                            value=""
+                            className="font-medium"
+                            defaultChecked
+                          >
+                            UserCatagory
+                          </option>
+                          <option value="client">Client</option>
+                          <option value="carpainter">carpainter</option>
+                        </select>
                       </div>
                     </div>
-                    
+
                     <div class="flex -mx-3">
                       <div class="w-full px-3 mb-5">
                         <label for="" class="text-xs font-semibold px-1">
@@ -489,9 +557,9 @@ function Login() {
                             <i class="mdi mdi-email-outline text-gray-400 text-lg"></i>
                           </div>
                           <input
-                           onChange={(e) => heandalinput(e)}
-                            name="Email"
-                            value={loginData.Email}
+                            onChange={(e) => heandalinput(e)}
+                            name="email"
+                            value={loginData.email}
                             type="email"
                             class="w-full -ml-10 pl-4 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-ButtonColor"
                             placeholder="johnsmith@example.com"
@@ -509,9 +577,9 @@ function Login() {
                             <i class="mdi mdi-lock-outline text-gray-400 text-lg"></i>
                           </div>
                           <input
-                           onChange={(e) => heandalinput(e)}
-                            name="Passwrod"
-                            value={loginData.Passwrod}
+                            onChange={(e) => heandalinput(e)}
+                            name="password"
+                            value={loginData.password}
                             type="text"
                             class="w-full -ml-10 pl-4 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-ButtonColor"
                             placeholder="************"
@@ -521,21 +589,25 @@ function Login() {
                     </div>
                     <div class="flex -mx-3">
                       <div class="w-full flex justify-center flex-col px-3 mb-5">
-                      <span className="mb-[.6rem] w-full text-center text-TextColor2">
-              
-                Already haven account ?
-                 <a
-                   onClick={() => {
-                     setIsLogin(!isLogin);
-                   }}
-                   className="cursor-pointer font-semibold"
-                 >
-                  Login
-                 </a>
-               </span>
-                        <button onClick={() => {
-                   setDataToLocalSt();
-                }} type="submit" class="block w-full max-w-xs mx-auto bg-ButtonColor/70 hover:bg-ButtonColor focus:bg-ButtonColor text-white rounded-lg px-3 py-3 font-semibold">
+                        <span className="mb-[.6rem] w-full text-center text-TextColor2">
+                          Already haven account ?
+                          <a
+                            onClick={() => {
+                              setIsLogin(!isLogin);
+                            }}
+                            className="cursor-pointer font-semibold"
+                          >
+                            Login
+                          </a>
+                        </span>
+                        <button
+                          onClick={() => {
+                            setDataToLocalSt();
+                            Signup();
+                          }}
+                          type="submit"
+                          class="block w-full max-w-xs mx-auto bg-ButtonColor/70 hover:bg-ButtonColor focus:bg-ButtonColor text-white rounded-lg px-3 py-3 font-semibold"
+                        >
                           REGISTER NOW
                         </button>
                       </div>

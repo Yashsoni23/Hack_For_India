@@ -181,7 +181,7 @@ function ProfilePage() {
 
                     {!proEditable ? (
                       <div className="px-4 py-2 -ml-[12rem] max-sm:ml-0 flex gap-[2rem] justify-start border-b-2 border-slate-200">
-                        <div className="">Female</div>
+                        <div className="">Male</div>
                       </div>
                     ) : (
                       <div className="px-4 py-2 -ml-[12rem] max-sm:ml-0 flex gap-[2rem] justify-start">

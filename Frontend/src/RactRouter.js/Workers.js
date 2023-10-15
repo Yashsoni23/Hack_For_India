@@ -1,19 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { FaSearch , FaAngleRight } from "react-icons/fa";
+import { FaSearch, FaAngleRight } from "react-icons/fa";
 import Footer from "./Footer";
 import axios from "axios";
 
 function Workers() {
   const [workers, setWorkers] = useState([]);
-  // const getData = async () => {
-  //   try {
-  //     const data = await axios.get("http://172.24.48.1:5000/worker/all");
-  //     console.log({ data });
-  //     setWorkers(data.data?.data);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
+  const [WorkersCategories, setWorkersCategories] = useState([]);
+  const getData = async () => {
+    try {
+      const data = await axios.get(
+        "https://no-poverty.adaptable.app/worker/all"
+      );
+      console.log({ data });
+      setWorkers(data.data?.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const getWorkersCategory = async () => {
+    try {
+      const categorys = await axios.get(
+        "https://no-poverty.adaptable.app/category/all"
+      );
+      setWorkersCategories(categorys.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
+    getData();
+    getWorkersCategory();
+  }, []);
 
   const catagory = ["Painters", "Mechanics", "Plumbers", "Electricians"];
   const worker = [
@@ -123,50 +141,56 @@ function Workers() {
           </div>
 
           <div className="flex gap-[.5rem]">
-            {catagory.map((e, index) => {
-              const isActive = index === activeCategory;
-              return (
-                <div
-                  key={index}
-                  onClick={() => handleCategoryClick(index)}
-                  className={`cursor-pointer px-[1.4rem] max-sm:py-[.4rem] rounded-[1.2rem] h-full w-fit text-[1rem] font-medium ${
-                    isActive ? "bg-primaryColor text-white" : "bg-slate-200"
-                  }  flex justify-center items-center`}
-                >
-                  {e}
-                </div>
-              );
-            })}
+            {WorkersCategories?.length > 0 ? (
+              WorkersCategories.map((e, index) => {
+                const isActive = index === activeCategory;
+                return (
+                  <div
+                    key={index}
+                    onClick={() => handleCategoryClick(index)}
+                    className={`cursor-pointer px-[1.4rem] max-sm:py-[.4rem] rounded-[1.2rem] h-full w-fit text-[1rem] font-medium ${
+                      isActive ? "bg-primaryColor text-white" : "bg-slate-200"
+                    }  flex justify-center items-center`}
+                  >
+                    {e?.name}
+                  </div>
+                );
+              }).slice(5)
+            ) : (
+              <h1>category not found</h1>
+            )}
           </div>
         </div>
         <div className="pb-[4rem] mt-[2rem] min-h-[38rem] h-fit flex-wrap flex max-sm:flex-col max-sm:justify-start gap-[1.8rem]">
-          {/* {workers?.length > 0 ? ( */}
-
-          {worker.map((worker, i) => {
-            return (
-              <div className="cursor-pointer flex justify-between items-center gap-[1.2rem] h-fit w-[30rem] p-[1.2rem] rounded-[1rem] border-[1px] border-slate-300 bg-white">
-              <div className="flex gap-[1rem]">
-                <img
-                  src={worker?.img_src}
-                  className="h-[3.4rem] w-[3.4rem] rounded-full bg-black"
-                />
-                <div>
-                  <h2 className="text-[1.2rem] font-semibold">
-                    {worker?.name}
-                  </h2>
-                  <h2 className="text-[.9rem] font-medium">{worker?.Email}</h2>
+          {workers?.length > 0 ? (
+            workers.map((worker, i) => {
+              return (
+                <div className="cursor-pointer flex justify-between items-center gap-[1.2rem] h-fit w-[30rem] p-[1.2rem] rounded-[1rem] border-[1px] border-slate-300 bg-white">
+                  <div className="flex gap-[1rem]">
+                    <img
+                      src={
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRudDbHeW2OobhX8E9fAY-ctpUAHeTNWfaqJA&usqp=CAU"
+                      }
+                      className="h-[3.4rem] w-[3.4rem] rounded-full bg-black"
+                    />
+                    <div>
+                      <h2 className="text-[1.2rem] font-semibold">
+                        {worker?.username}
+                      </h2>
+                      <h2 className="text-[.9rem] font-medium">
+                        {worker?.email}
+                      </h2>
+                    </div>
+                  </div>
+                  <div className="flex justify-center items-center rounded-full h-[2rem] w-[2rem] ">
+                    <FaAngleRight className="text-[2rem] text-slate-300" />
+                  </div>
                 </div>
-                </div>
-                <div  className="flex justify-center items-center rounded-full h-[2rem] w-[2rem] ">
-                  <FaAngleRight className="text-[2rem] text-slate-300"/>
-                </div>
-              </div>
-            );
-          })}
-
-          {/* ) : (
+              );
+            })
+          ) : (
             <h1>No worker here</h1>
-          )} */}
+          )}
         </div>
       </div>
       <Footer />
